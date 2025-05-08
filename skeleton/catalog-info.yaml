@@ -1,0 +1,9 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: basic-service
+  title: Basic Service
+  description: Scaffold a basic microservice
+spec:
+  path: ./template.yaml
