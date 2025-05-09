@@ -49,7 +49,7 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: https://github.com/utherp0/janustest1/
+        url: https://github.com/ysoni-redhat/ActualSoftwareTest
         values:
           name: ${{ parameters.name }}
           owner: ${{ parameters.owner }}
@@ -59,7 +59,7 @@ spec:
       action: fetch:plain
       input:
         targetPath: .
-        url: https://github.com/utherp0/testscaffold
+        url: https://github.com/ysoni-redhat/ActualSoftwareTest
 
     - id: publish
       name: Publish
