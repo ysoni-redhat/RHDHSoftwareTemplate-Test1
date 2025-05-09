@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: springboot
+  annotations:
+    github.com/project-slug: ysoni-redhat/RHDHSoftwareTemplate-Test1
+spec:
+  type: demonstration
+  lifecycle: demoonly
