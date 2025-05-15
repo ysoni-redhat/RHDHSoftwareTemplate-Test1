@@ -6,6 +6,7 @@ metadata:
   annotations:
     github.com/project-slug: ysoni-redhat/RHDHSoftwareTemplate-Test1
     backstage.io/kubernetes-id: springboot-demo
+    backstage.io/kubernetes-label-selector: app=springboot-demo
     backstage.io/kubernetes-namespace: demo-project
 spec:
   type: demonstration
