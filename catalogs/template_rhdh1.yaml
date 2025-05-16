@@ -95,6 +95,20 @@ spec:
         description: ${{ parameters.description }}
         repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
         defaultBranch: main
+        
+    - id: catalogTemplate
+      name: Generating the Catalog Info Component
+      action: fetch:template
+      input:
+        url: ../skeletons
+        values:
+          entityKind: Component
+          orgName: ${{ parameters.orgName }}
+          repoName: ${{ parameters.repoName }}
+          owner: ${{ parameters.owner }}
+          applicationType: service
+          description: ${{ parameters.description }}
+          lifecycle: experimental
 
     - id: register
       name: Registering the Catalog Info Component
