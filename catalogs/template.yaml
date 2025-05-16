@@ -1,7 +1,5 @@
-# Notice the v1beta3 version
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
-# some metadata about the template itself
 metadata:
   name: rhdhdemo1
   title: Yogita Spring Boot App
@@ -10,7 +8,6 @@ spec:
   owner: backstage/techdocs-core
   type: service
 
-  # these are the steps which are rendered in the frontend with the form input
   parameters:
     - title: Fill in some steps
       required:
@@ -43,27 +40,52 @@ spec:
             allowedHosts:
               - github.com
 
-  # here's the steps that are executed in series in the scaffolder backend
   steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: https://github.com/ysoni-redhat/ActualSoftwareTest
+        values:
+          name: ${{ parameters.name }}
+          owner: ${{ parameters.owner }}
+          repoUrl: ${{ parameters.repoUrl }}
+          repoOwner: ${{ parseRepoUrl(parameters.repoUrl).owner }}
+          repoName: ${{ parseRepoUrl(parameters.repoUrl).repo }}
+
     - id: debug-repo-url
       name: Debug Repo URL
       action: debug:log
       input:
-        message: repoUrl = ${{ parameters.repoUrl }}
-    
+        message: repoUrl = ${{ values.repoUrl }}
+
     - id: debug-repo-owner
       name: Debug Repo Owner
       action: debug:log
       input:
         message: repoOwner = ${{ values.repoOwner }}
-    
+
     - id: debug-repo-name
       name: Debug Repo Name
       action: debug:log
       input:
         message: repoName = ${{ values.repoName }}
 
-  # some outputs which are saved along with the job for use in the frontend
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ values.name }}
+        repoUrl: ${{ values.repoUrl }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
   output:
     links:
       - title: Repository
@@ -71,4 +93,3 @@ spec:
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps['register'].output.entityRef }}
-
