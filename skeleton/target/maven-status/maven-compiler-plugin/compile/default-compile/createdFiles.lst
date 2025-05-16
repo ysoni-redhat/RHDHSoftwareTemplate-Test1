@@ -1,0 +1,6 @@
+com/myapp/weather/ServletInitializer.class
+com/myapp/weather/exception/ResourceNotFoundException.class
+com/myapp/weather/repository/WeatherRepository.class
+com/myapp/weather/model/Weather.class
+com/myapp/weather/WeatherApplication.class
+com/myapp/weather/controller/WeatherController.class

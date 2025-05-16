@@ -1,0 +1,6 @@
+/home/yogita/test4/may1/software/ActualSoftwareTest/src/main/java/com/myapp/weather/ServletInitializer.java
+/home/yogita/test4/may1/software/ActualSoftwareTest/src/main/java/com/myapp/weather/WeatherApplication.java
+/home/yogita/test4/may1/software/ActualSoftwareTest/src/main/java/com/myapp/weather/controller/WeatherController.java
+/home/yogita/test4/may1/software/ActualSoftwareTest/src/main/java/com/myapp/weather/exception/ResourceNotFoundException.java
+/home/yogita/test4/may1/software/ActualSoftwareTest/src/main/java/com/myapp/weather/model/Weather.java
+/home/yogita/test4/may1/software/ActualSoftwareTest/src/main/java/com/myapp/weather/repository/WeatherRepository.java
