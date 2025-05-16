@@ -1,12 +1,12 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: {{ entityKind }}
 metadata:
-  name: springBootComponent
+  name: {{ repoName }}
   annotations:
-    github.com/project-slug: ysoni-redhat/ActualSoftwareTest
-    backstage.io/kubernetes-id: springboot-demo
-    backstage.io/kubernetes-namespace: demo-project
+    github.com/project-slug: {{ orgName }}/{{ repoName }}
+    backstage.io/kubernetes-id: {{ deployName }}
+    backstage.io/kubernetes-namespace: {{ namespace }}
 spec:
-  type: demonstration
-  lifecycle: demoonly
-  owner: user:ysoni-redhat
+  type: {{ applicationType }}
+  lifecycle: {{ lifecycle }}
+  owner: {{ owner }}
