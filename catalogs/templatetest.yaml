@@ -45,17 +45,6 @@ spec:
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
-    - id: debug-log
-      name: Debug Repo Parsing
-      action: debug:log
-      input:
-        message: |
-          🐛 Debugging parsed repo info:
-          repoUrl: ${{ parameters.repoUrl }}
-          repoOwner: ${{ parseRepoUrl(parameters.repoUrl).owner }}
-          repoName: ${{ parseRepoUrl(parameters.repoUrl).repo }}
-          name: ${{ parameters.name }}
-  
     - id: fetch-base
       name: Fetch Base
       action: fetch:template
@@ -65,8 +54,6 @@ spec:
           name: ${{ parameters.name }}
           owner: ${{ parameters.owner }}
           repoUrl: ${{ parameters.repoUrl }}
-          repoOwner: ${{ parseRepoUrl(parameters.repoUrl).owner }}
-          repoName: ${{ parseRepoUrl(parameters.repoUrl).repo }}
 
     - id: publish
       name: Publish
