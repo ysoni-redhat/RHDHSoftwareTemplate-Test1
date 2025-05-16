@@ -101,6 +101,7 @@ spec:
       action: fetch:template
       input:
         url: ../skeletons
+        targetPath: .  
         values:
           entityKind: Component
           orgName: ${{ parameters.orgName }}
