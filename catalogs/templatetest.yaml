@@ -54,6 +54,7 @@ spec:
           repoUrl: ${{ parameters.repoUrl }}
           repoOwner: ${{ parseRepoUrl(parameters.repoUrl).owner }}
           repoName: ${{ parseRepoUrl(parameters.repoUrl).repo }}
+          name: ${{ parameters.name }}
   
     - id: fetch-base
       name: Fetch Base
