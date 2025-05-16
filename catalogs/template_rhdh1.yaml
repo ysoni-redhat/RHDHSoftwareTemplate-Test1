@@ -109,6 +109,8 @@ spec:
           applicationType: service
           description: ${{ parameters.description }}
           lifecycle: experimental
+          namespace: ${{ parameters.namespace }}
+          deployname:  ${{ parameters.repoName }}
 
     - id: register
       name: Registering the Catalog Info Component
