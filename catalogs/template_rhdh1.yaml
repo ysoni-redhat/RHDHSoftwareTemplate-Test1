@@ -77,4 +77,13 @@ spec:
           sourceControl: github.com
           port: ${{ parameters.port }}
 
+    - id: publish
+      name: Publishing to the Source Code Repository
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        repoVisibility: ${{ parameters.repoVisibility }}
+        description: ${{ parameters.description }}
+        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+        defaultBranch: main
 
