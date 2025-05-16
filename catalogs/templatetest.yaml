@@ -53,6 +53,9 @@ spec:
         values:
           name: ${{ parameters.name }}
           owner: ${{ parameters.owner }}
+          repoUrl: ${{ parameters.repoUrl }}
+          repoOwner: ${{ parseRepoUrl(parameters.repoUrl).owner }}
+          repoName: ${{ parseRepoUrl(parameters.repoUrl).repo }}
 
     - id: publish
       name: Publish
