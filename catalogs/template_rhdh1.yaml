@@ -60,4 +60,8 @@ spec:
         message: |
           📦 Received input parameters:
           orgName: ${{ parameters.orgName }}
-          repoName:
+          repoName: ${{ parameters.repoName }}
+          repoVisibility: ${{ parameters.repoVisibility }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          namespace: ${{ parameters.namespace }}
