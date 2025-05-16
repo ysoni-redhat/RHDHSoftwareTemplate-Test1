@@ -110,7 +110,7 @@ spec:
           description: ${{ parameters.description }}
           lifecycle: experimental
           namespace: ${{ parameters.namespace }}
-          deployname:  ${{ parameters.repoName }}
+          deployName:  ${{ parameters.repoName }}
 
     - id: register
       name: Registering the Catalog Info Component
