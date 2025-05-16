@@ -65,3 +65,14 @@ spec:
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           namespace: ${{ parameters.namespace }}
+
+    - id: sourceCodeTemplate
+      name: Generating the Source Code Component
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          orgName: ${{ parameters.orgName }}
+          repoName: ${{ parameters.repoName }}
+          sourceControl: github.com
+          port: ${{ parameters.port }}  
