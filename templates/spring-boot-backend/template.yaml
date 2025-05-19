@@ -126,6 +126,8 @@ spec:
         targetPath: deploy/k8s
         values:
           port: ${{ parameters.port }}
+          orgName: ${{ parameters.orgName }}
+          repoName: ${{ parameters.repoName }}
 
     - id: publish
       name: Publishing to the Source Code Repository
