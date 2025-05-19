@@ -1,0 +1,122 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: spring-boot-weather-api-backend
+  title: Weather-App REST Backend
+  description: Create a rest api backend in spring-boot with CICD pipeline 
+  tags:
+    - springboot
+    - api
+    - microservice
+    - recommended
+spec:
+  owner: ysoni@redhat.com
+  type: service
+
+  parameters:
+    - title: Provide infomation about the service
+      properties:
+        orgName:
+          title: GitHub Org
+          type: string
+        repoName:
+          title: Repository Name
+          type: string
+        repoVisibility:
+          title: Repo visibility
+          type: string
+          default: public
+          enum:
+            - public
+            - private
+            - internal
+        description: 
+          title: Description
+          type: string
+          description: Provide a description which will help others understand what this component is for
+        port:
+          title: Port
+          type: number
+          default: 7890
+          description: port at which the server is going to listen for HTTP request
+      required:
+        - orgName
+        - repoName
+        - port
+      
+    - title: Provide Information about deployment targets 
+      properties:
+        namespace:
+          title: k8s Namespace
+          type: string 
+      required:
+        - namespace
+
+  steps:
+    - id: debug-input
+      name: Debug Input Parameters
+      action: debug:log
+      input:
+        message: |
+          📦 Received input parameters:
+          orgName: ${{ parameters.orgName }}
+          repoName: ${{ parameters.repoName }}
+          repoVisibility: ${{ parameters.repoVisibility }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          namespace: ${{ parameters.namespace }}
+
+    - id: sourceCodeTemplate
+      name: Generating the Source Code Component
+      action: fetch:template
+      input:
+        url: ../skeleton
+        targetPath: .          
+        values:
+          orgName: ${{ parameters.orgName }}
+          repoName: ${{ parameters.repoName }}
+          sourceControl: github.com
+          port: ${{ parameters.port }}
+
+    - id: debug-files
+      name: Debug Workspace Files
+      action: debug:log
+      input:
+        message: |
+          Generated files:
+          ${{ steps.sourceCodeTemplate.output.files }}
+
+    - id: publish
+      name: Publishing to the Source Code Repository
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        repoVisibility: ${{ parameters.repoVisibility }}
+        description: ${{ parameters.description }}
+        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+        defaultBranch: main
+        
+    - id: catalogTemplate
+      name: Generating the Catalog Info Component
+      action: fetch:template
+      input:
+        url: ../../skeletons/catalog-info/
+        targetPath: .  
+        values:
+          entityKind: Component
+          orgName: ${{ parameters.orgName }}
+          repoName: ${{ parameters.repoName }}
+          owner: ${{ parameters.owner }}
+          applicationType: service
+          description: ${{ parameters.description }}
+          lifecycle: experimental
+          namespace: ${{ parameters.namespace }}
+          deployName:  ${{ parameters.repoName }}
+
+    - id: register
+      name: Registering the Catalog Info Component
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
