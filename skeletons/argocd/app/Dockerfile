@@ -5,7 +5,7 @@ FROM openjdk:17
 WORKDIR /app
 
 # Use ADD to download the JAR directly from GitHub
-ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/target/weather-0.0.1-SNAPSHOT.jar
+ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/target/weather-0.0.1-SNAPSHOT.jar main.jar
 
 # Copy application JAR file
 # COPY /target/*.jar main.jar
