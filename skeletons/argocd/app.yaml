@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: skeletons/argocd 
-    repoURL: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
+    repoURL: github.com?owner=${{ values.orgName }}&repo=${{ values.repoName }}
     targetRevision: main
   syncPolicy:
     automated:
