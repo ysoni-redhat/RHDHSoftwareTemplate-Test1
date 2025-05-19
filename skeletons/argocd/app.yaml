@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: deploy/k8s
-    repoURL: github.com?owner=${{ values.orgName }}&repo=${{ values.repoName }}
+    repoURL: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
     targetRevision: main
   syncPolicy:
     automated:
