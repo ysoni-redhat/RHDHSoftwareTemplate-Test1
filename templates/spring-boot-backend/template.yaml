@@ -19,9 +19,11 @@ spec:
         orgName:
           title: GitHub Org
           type: string
+          default: ysoni-redhat
         repoName:
           title: Repository Name
           type: string
+          default: spring-rhdhX
         repoVisibility:
           title: Repo visibility
           type: string
@@ -33,6 +35,7 @@ spec:
         description: 
           title: Description
           type: string
+          default: test
           description: Provide a description which will help others understand what this component is for
         port:
           title: Port
@@ -49,6 +52,7 @@ spec:
         namespace:
           title: k8s Namespace
           type: string 
+          default: test
       required:
         - namespace
 
