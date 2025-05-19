@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+namespace: demo-project
+metadata:
+  name: springboot-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-demo
+  template:
+    metadata:
+      labels:
+        app: springboot-demo
+    spec:
+      containers:
+        - name: springboot
+          image: image-registry.openshift-image-registry.svc:5000/demo-project/springboot-demo:latest
+          ports:
+            - containerPort: ${{ values.port }}
