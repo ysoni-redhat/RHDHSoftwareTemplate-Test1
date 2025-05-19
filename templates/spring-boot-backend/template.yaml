@@ -86,16 +86,7 @@ spec:
           Generated files:
           ${{ steps.sourceCodeTemplate.output.files }}
 
-    - id: publish
-      name: Publishing to the Source Code Repository
-      action: publish:github
-      input:
-        allowedHosts: ['github.com']
-        repoVisibility: ${{ parameters.repoVisibility }}
-        description: ${{ parameters.description }}
-        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
-        defaultBranch: main
-        
+
     - id: catalogTemplate
       name: Generating the Catalog Info Component
       action: fetch:template
@@ -121,7 +112,16 @@ spec:
          📄 catalog-info.yaml content:
          ${{ readFile('catalog-info.yaml') }}
 
-
+    - id: publish
+      name: Publishing to the Source Code Repository
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        repoVisibility: ${{ parameters.repoVisibility }}
+        description: ${{ parameters.description }}
+        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+        defaultBranch: main
+        
     - id: register
       name: Registering the Catalog Info Component
       action: catalog:register
