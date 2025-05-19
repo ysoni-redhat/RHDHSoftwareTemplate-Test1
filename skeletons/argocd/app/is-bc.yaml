@@ -14,8 +14,8 @@ spec:
   source:
     type: Git
     git:
-      uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}/blob/main/deploy/k8s/Dockerfile
-    contextDir: .
+      uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
+    contextDir: deploy/k8s/app
   strategy:
     type: Docker
   output:
