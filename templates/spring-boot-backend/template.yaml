@@ -112,6 +112,20 @@ spec:
          📄 catalog-info.yaml content:
          ${{ readFile('catalog-info.yaml') }}
 
+    - id: debug-workspace
+      name: List all workspace files
+      action: debug:log
+      input:
+        message: |
+         📁 Workspace contents:
+         ${{ parameters.repoName }}
+         ${{ parameters.namespace }}
+         ${{ parameters.owner }}
+         ${{ parameters.description }}
+         ${{ parameters.port }}
+         Files: ${{ steps['catalogTemplate'].output.files }}
+
+
     - id: publish
       name: Publishing to the Source Code Repository
       action: publish:github
