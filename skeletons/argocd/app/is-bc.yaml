@@ -22,3 +22,5 @@ spec:
     to:
       kind: ImageStreamTag
       name: springboot-demo:latest
+  triggers:
+    - type: ConfigChange
