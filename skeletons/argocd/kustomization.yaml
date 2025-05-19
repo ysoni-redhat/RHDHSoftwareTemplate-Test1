@@ -1,5 +1,5 @@
 resources: 
-  - is-bc.yaml
-  - deployment.yaml
-  - service.yaml
-  - route.yaml
+  - app/is-bc.yaml
+  - app/deployment.yaml
+  - app/service.yaml
+  - app/route.yaml

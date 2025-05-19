@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: skeletons/argocd 
+    path: deploy/k8s
     repoURL: github.com?owner=${{ values.orgName }}&repo=${{ values.repoName }}
     targetRevision: main
   syncPolicy:

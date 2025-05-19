@@ -14,7 +14,7 @@ spec:
   source:
     type: Git
     git:
-      uri: https://github.com/ysoni-redhat/ActualSoftwareTest.git
+      uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}/blob/main/deploy/k8s/Dockerfile
     contextDir: .
   strategy:
     type: Docker
