@@ -118,6 +118,14 @@ spec:
          ${{ parameters.port }}
          Files: ${{ steps['catalogTemplate'].output.files }}
 
+    - id: deployManifests
+      name: "Generating deployment manifests"
+      action: fetch:template
+      input:
+        url: ../../skeletons/argocd
+        targetPath: deploy/k8s
+        values:
+          port: ${{ parameters.port }}
 
     - id: publish
       name: Publishing to the Source Code Repository
