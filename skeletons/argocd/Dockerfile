@@ -7,6 +7,6 @@ WORKDIR /app
 # Copy application JAR file
 COPY /target/*.jar main.jar
 
-EXPOSE 8070
+EXPOSE ${{ values.port }}
 RUN chmod +x main.jar
-CMD ["java", "-Dserver.port=8070", "-jar", "main.jar"]
+CMD ["java", "-Dserver.port=${{ values.port }}", "-jar", "main.jar"]
