@@ -101,6 +101,7 @@ spec:
       action: fetch:template
       input:
         url: ../../skeletons/catalog-info/
+        targetPath: .
         values:
           entityKind: Component
           orgName: ${{ parameters.orgName }}
@@ -111,6 +112,15 @@ spec:
           lifecycle: experimental
           namespace: ${{ parameters.namespace }}
           deployName:  ${{ parameters.repoName }}
+
+    - id: debug-catalog
+      name: Debug Catalog File
+      action: debug:log
+      input:
+        message: |
+         📄 catalog-info.yaml content:
+         ${{ readFile('catalog-info.yaml') }}
+
 
     - id: register
       name: Registering the Catalog Info Component
