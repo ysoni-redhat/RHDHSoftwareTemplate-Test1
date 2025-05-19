@@ -77,6 +77,12 @@ spec:
           repoName: ${{ parameters.repoName }}
           sourceControl: github.com
           port: ${{ parameters.port }}
+          owner: ${{ parameters.owner }}
+          applicationType: service
+          description: ${{ parameters.description }}
+          lifecycle: experimental
+          namespace: ${{ parameters.namespace }}
+          deployName:  ${{ parameters.repoName }}
 
     - id: debug-files
       name: Debug Workspace Files
@@ -85,24 +91,6 @@ spec:
         message: |
           Generated files:
           ${{ steps.sourceCodeTemplate.output.files }}
-
-
-    - id: catalogTemplate
-      name: Generating the Catalog Info Component
-      action: fetch:template
-      input:
-        url: ./skeleton
-        targetPath: .
-        values:
-          entityKind: Component
-          orgName: ${{ parameters.orgName }}
-          repoName: ${{ parameters.repoName }}
-          owner: ${{ parameters.owner }}
-          applicationType: service
-          description: ${{ parameters.description }}
-          lifecycle: experimental
-          namespace: ${{ parameters.namespace }}
-          deployName:  ${{ parameters.repoName }}
 
     - id: debug-catalog
       name: Debug Catalog File

@@ -1,12 +1,12 @@
 apiVersion: backstage.io/v1alpha1
-kind: ${{ entityKind }}
+kind: ${{ values.entityKind }}
 metadata:
-  name: ${{ repoName }}
+  name: ${{ values.repoName }}
   annotations:
-    github.com/project-slug: "${{ orgName }}/${{ repoName }}"
-    backstage.io/kubernetes-id: "${{ deployName }}"
-    backstage.io/kubernetes-namespace: "${{ namespace }}"
+    github.com/project-slug: "${{ values.orgName }}/${{ values.repoName }}"
+    backstage.io/kubernetes-id: "${{ values.deployName }}"
+    backstage.io/kubernetes-namespace: "${{ values.namespace }}"
 spec:
-  type: ${{ applicationType }}
-  lifecycle: ${{ lifecycle }}
-  owner: ${{ owner }}
+  type: ${{ values.applicationType }}
+  lifecycle: ${{ values.lifecycle }}
+  owner: ${{ values.owner }}
