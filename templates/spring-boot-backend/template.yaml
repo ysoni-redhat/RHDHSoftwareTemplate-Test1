@@ -81,12 +81,13 @@ spec:
           repoName: ${{ parameters.repoName }}
           sourceControl: github.com
           port: ${{ parameters.port }}
-          owner: ${{ parameters.owner }}
+          owner: ${{ parameters.orgName }}
           applicationType: service
           description: ${{ parameters.description }}
           lifecycle: experimental
           namespace: ${{ parameters.namespace }}
           deployName:  ${{ parameters.repoName }}
+          entityKind: Component
 
     - id: debug-files
       name: Debug Workspace Files
