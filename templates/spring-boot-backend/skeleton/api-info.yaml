@@ -13,4 +13,4 @@ spec:
   lifecycle: experimental
   owner: ${{ values.orgName }}
   definition:
-    $openapi: https://api.apis.guru/v2/openapi.yaml
+    $text: https://petstore.swagger.io/v2/swagger.json
