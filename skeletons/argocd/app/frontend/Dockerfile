@@ -12,11 +12,12 @@ RUN npm install
 
 # Download and extract the zip file containing the React app
 ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/frontend/react-frontend.zip ./
-RUN unzip react-frontend.zip && rm react-frontend.zip
+
+RUN unzip react-frontend.zip
+RUN mv react-app-frontend/* .
 
 # Verify installed packages and directory content
 RUN ls -la /app
-WORKDIR /app/react-frontend
 
 # Build the React app for production
 RUN npm run build
