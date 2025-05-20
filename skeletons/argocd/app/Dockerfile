@@ -11,5 +11,5 @@ ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/hea
 # COPY /target/*.jar main.jar
 
 EXPOSE ${{ values.port }}
-RUN chmod +x main.jar
+RUN chmod 755 main.jar
 CMD ["java", "-Dserver.port=${{ values.port }}", "-jar", "main.jar"]
