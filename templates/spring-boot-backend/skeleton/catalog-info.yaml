@@ -3,9 +3,9 @@ kind: ${{ values.entityKind }}
 metadata:
   name: ${{ values.repoName }}
   annotations:
-    github.com/project-slug: "${{ values.orgName }}/${{ values.repoName }}"
-    backstage.io/kubernetes-id: "${{ values.projectName }}"
-    backstage.io/kubernetes-namespace: "${{ values.namespace }}"
+    github.com/project-slug: ${{ values.orgName }}/${{ values.repoName }}
+    backstage.io/kubernetes-id: ${{ values.projectName }}
+    backstage.io/kubernetes-namespace: ${{ values.namespace }}
 spec:
   type: ${{ values.applicationType }}
   lifecycle: ${{ values.lifecycle }}
