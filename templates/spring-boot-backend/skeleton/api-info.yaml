@@ -1,0 +1,33 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ${{ values.repoName }}-api
+  description: Weather REST API exposed by Spring Boot backend
+  tags:
+    - rest
+    - openapi
+    - weather
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: ${{ values.orgName }}
+  definition:
+    $text: |
+      openapi: 3.0.0
+      info:
+        title: Weather REST API
+        version: 1.0.0
+        description: Provides current weather data from a Spring Boot backend
+      servers:
+        - url: http://springboot-route-demo-project.apps.cluster-qr8h2.dynamic.redhatworkshops.io
+      paths:
+        /api/v1/weather:
+          get:
+            summary: Get current weather
+            operationId: getWeather
+            responses:
+              '200':
+                description: Successful response
+              '500':
+                description: Server error
