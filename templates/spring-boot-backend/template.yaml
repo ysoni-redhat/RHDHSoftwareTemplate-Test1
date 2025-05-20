@@ -46,7 +46,12 @@ spec:
         - orgName
         - repoName
         - port
-      
+
+        projectName:
+          title: Project Name/Tag
+          type: string
+          default: springboot-demo
+
     - title: Provide Information about deployment targets 
       properties:
         namespace:
@@ -88,6 +93,7 @@ spec:
           namespace: ${{ parameters.namespace }}
           deployName:  ${{ parameters.repoName }}
           entityKind: Component
+          projectName: ${{ parameters.projectName }}
 
     - id: debug-files
       name: Debug Workspace Files
@@ -128,6 +134,8 @@ spec:
           port: ${{ parameters.port }}
           orgName: ${{ parameters.orgName }}
           repoName: ${{ parameters.repoName }}
+          namespace: ${{ parameters.namespace }}
+          projectName: ${{ parameters.projectName }}
 
     - id: publish
       name: Publishing to the Source Code Repository
