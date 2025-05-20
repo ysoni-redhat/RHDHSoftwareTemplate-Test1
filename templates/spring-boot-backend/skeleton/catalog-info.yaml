@@ -6,6 +6,7 @@ metadata:
     github.com/project-slug: ${{ values.orgName }}/${{ values.repoName }}
     backstage.io/kubernetes-id: ${{ values.projectName }}
     backstage.io/kubernetes-namespace: ${{ values.namespace }}
+    backstage.io/kubernetes-label-selector: 'app=${{ values.projectName }}'
 spec:
   type: ${{ values.applicationType }}
   lifecycle: ${{ values.lifecycle }}
