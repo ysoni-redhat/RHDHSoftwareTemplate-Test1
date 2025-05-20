@@ -21,7 +21,7 @@ spec:
     type: Git
     git:
       uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
-    contextDir: backend
+    contextDir: deploy/k8s/app/backend
   strategy:
     type: Docker
     dockerStrategy:
@@ -46,7 +46,7 @@ spec:
     type: Git
     git:
       uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
-    contextDir: frontend
+    contextDir: deploy/k8s/app/frontend
   strategy:
     type: Docker
     dockerStrategy:
