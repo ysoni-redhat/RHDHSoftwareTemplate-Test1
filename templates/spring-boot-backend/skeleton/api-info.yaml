@@ -13,4 +13,4 @@ spec:
   lifecycle: experimental
   owner: ${{ values.orgName }}
   definition:
-    $file: ./openapi.yaml
+    $openapi: https://api.apis.guru/v2/openapi.yaml
