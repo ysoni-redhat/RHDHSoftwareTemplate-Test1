@@ -1,18 +1,21 @@
 ---
 apiVersion: apps/v1
 kind: Deployment
-namespace: demo-project
+namespace: ${{ values.namespace }}
 metadata:
   name: springboot-demo
+  annotations:
+    backstage.io/kubernetes-id: "${{ values.projectName }}"
+    backstage.io/kubernetes-namespace: "${{ values.namespace }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: springboot-demo
+      app: ${{ values.projectName }}
   template:
     metadata:
       labels:
-        app: springboot-demo
+        app: ${{ values.projectName }}
     spec:
       containers:
         - name: springboot
