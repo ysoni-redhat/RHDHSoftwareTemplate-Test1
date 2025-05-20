@@ -6,13 +6,13 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y curl unzip && rm -rf /var/lib/apt/lists/*
 
 # Download package.json from GitHub
-ADD https://raw.githubusercontent.com/${{ values.orgName }}/${{ values.repoName }}/main/templates/react-app-frontend/package.json .
+ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/templates/spring-boot-app/skeleton/frontend/package.json .
 
 # Install dependencies
 RUN npm install
 
 # Download and extract the zip file containing the React app
-ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/main/templates/react-frontend.zip react-frontend.zip
+ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/templates/spring-boot-app/skeleton/frontend/react-frontend.zip .
 RUN unzip react-frontend.zip && rm react-frontend.zip
 
 # Move extracted content to /app (if not already directly in /app)
