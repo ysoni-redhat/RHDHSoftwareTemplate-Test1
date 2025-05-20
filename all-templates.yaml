@@ -5,4 +5,4 @@ metadata:
   description: A collection of Golden path templates for Red Hat Developer Hub
 spec:
   targets:
-    - ./templates/spring-boot-backend/template.yaml
+    - ./templates/spring-boot-app/template.yaml
