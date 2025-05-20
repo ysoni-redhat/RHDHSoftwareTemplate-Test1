@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: image-registry.openshift-image-registry.svc:5000/demo-project/springboot-demo:latest
+          image: image-registry.openshift-image-registry.svc:5000/demo-project/${{ values.projectName }}:latest
           ports:
             - containerPort: ${{ values.port }}
