@@ -3,10 +3,12 @@ apiVersion: apps/v1
 kind: Deployment
 namespace: ${{ values.namespace }}
 metadata:
-  name: springboot-demo
+  name: ${{ values.projectName }}
+  labels:
+    app: ${{ values.projectName }}
   annotations:
-    backstage.io/kubernetes-id: "${{ values.projectName }}"
-    backstage.io/kubernetes-namespace: "${{ values.namespace }}"
+    backstage.io/kubernetes-id: ${{ values.projectName }}
+    backstage.io/kubernetes-namespace: ${{ values.namespace }}
 spec:
   replicas: 1
   selector:
