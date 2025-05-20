@@ -1,7 +1,7 @@
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
-namespace: demo-project
+namespace: ${{ values.namespace }}
 metadata:
   name: springboot-route
 spec:
