@@ -12,4 +12,4 @@ spec:
   type: openapi
   lifecycle: experimental
   owner: ${{ values.orgName }}
-  definition: ./openapi.yaml
+  definition: ./openapi.json
