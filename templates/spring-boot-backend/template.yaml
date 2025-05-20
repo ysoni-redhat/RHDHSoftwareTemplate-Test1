@@ -42,15 +42,15 @@ spec:
           type: number
           default: 7890
           description: port at which the server is going to listen for HTTP request
-      required:
-        - orgName
-        - repoName
-        - port
-
         projectName:
           title: Project Name/Tag
           type: string
           default: springboot-demo
+      required:
+        - orgName
+        - repoName
+        - port
+        - projectName
 
     - title: Provide Information about deployment targets 
       properties:
