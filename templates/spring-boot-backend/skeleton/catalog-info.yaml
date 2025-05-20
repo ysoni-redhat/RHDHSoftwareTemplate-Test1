@@ -4,7 +4,7 @@ metadata:
   name: ${{ values.repoName }}
   annotations:
     github.com/project-slug: "${{ values.orgName }}/${{ values.repoName }}"
-    backstage.io/kubernetes-id: "${{ values.deployName }}"
+    backstage.io/kubernetes-id: "${{ values.projectName }}"
     backstage.io/kubernetes-namespace: "${{ values.namespace }}"
 spec:
   type: ${{ values.applicationType }}
