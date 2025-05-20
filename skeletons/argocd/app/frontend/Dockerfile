@@ -1,12 +1,23 @@
+
 FROM node:22
 WORKDIR /app
 
-# Copy package files and install dependencies
-# COPY ./weather_app_frontend/package*.json ./
-RUN npm install  # Install dependencies
+# Install curl and unzip (needed to fetch and extract files from GitHub)
+RUN apt-get update && apt-get install -y curl unzip && rm -rf /var/lib/apt/lists/*
 
-# Copy the rest of the application code
-#COPY ./weather_app_frontend/ ./
+# Download package.json from GitHub
+ADD https://raw.githubusercontent.com/${{ values.orgName }}/${{ values.repoName }}/main/templates/react-app-frontend/package.json .
+
+# Install dependencies
+RUN npm install
+
+# Download and extract the zip file containing the React app
+ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/main/templates/react-frontend.zip react-frontend.zip
+RUN unzip react-frontend.zip && rm react-frontend.zip
+
+# Move extracted content to /app (if not already directly in /app)
+# Adjust this command based on the ZIP's folder structure
+RUN mv react-frontend/* . && rmdir react-frontend || true
 
 # Verify installed packages and directory content
 RUN ls -la /app
@@ -17,3 +28,4 @@ RUN npm run build
 # Expose the port and start the app
 EXPOSE 3000
 CMD ["npm", "start"]
+
