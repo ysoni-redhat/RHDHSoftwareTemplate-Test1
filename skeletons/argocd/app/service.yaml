@@ -10,4 +10,17 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: ${{ values.port }}
+      targetPort: ${{ values.backendport }}
+---
+apiVersion: v1
+kind: Service
+namespace: ${{ values.namespace }}
+metadata:
+  name: react-app-service
+spec:
+  selector:
+    app: ${{ values.projectName }}
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: ${{ values.frontendport }}
