@@ -1,9 +1,9 @@
 ---
 apiVersion: apps/v1
 kind: Deployment
-namespace: ${{ values.namespace }}
 metadata:
   name: ${{ values.projectName }}
+  namespace: ${{ values.namespace }}
   labels:
     app: ${{ values.projectName }}
   annotations:
