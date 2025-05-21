@@ -157,6 +157,7 @@ spec:
           namespace: ${{ parameters.namespace }}
           projectName: ${{ parameters.projectName }}
           clusterid: ${{ parameters.clusterid }}
+          apikey: ${{ parameters.apikey }}
 
     - id: publish
       name: Publishing to the Source Code Repository
