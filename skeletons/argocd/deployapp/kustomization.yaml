@@ -1,5 +1,4 @@
 resources: 
-  - app/is-bc.yaml
   - app/deployment.yaml
   - app/service.yaml
   - app/route.yaml
