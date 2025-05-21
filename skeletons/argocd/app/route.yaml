@@ -10,6 +10,8 @@ spec:
     name: springboot-service
   port:
     targetPort: ${{ values.backendport }}
+  tls:
+    termination: edge
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -23,3 +25,6 @@ spec:
     name: react-app-service
   port:
     targetPort: ${{ values.frontendport }}
+  tls:
+    termination: edge
+    
