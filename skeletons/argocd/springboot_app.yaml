@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: springboot-app-deploy
+  name: springboot-app
   namespace: openshift-gitops
 spec:
   destination:
@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: deploy/k8s
+    path: deploy/k8s/deployapp
     repoURL: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
     targetRevision: main
   syncPolicy:
