@@ -1,0 +1,62 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: springboot-demo-backend
+  namespace: demo-project
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: springboot-demo-frontend
+  namespace: demo-project
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: springboot-demo-backend
+  namespace: demo-project
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com//spring-rhdh08.git
+    contextDir: deploy/k8s/app/backend
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: springboot-demo-backend:latest
+  triggers:
+    - type: ConfigChange
+    - type: GitHub
+      github:
+        secret: secret101
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: springboot-demo-frontend
+  namespace: demo-project
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/ysoni-redhat/spring-rhdh08.git
+    contextDir: deploy/k8s/app/frontend
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: springboot-demo-frontend:latest
+  triggers:
+    - type: ConfigChange
+    - type: GitHub
+      github:
+        secret: secret102
