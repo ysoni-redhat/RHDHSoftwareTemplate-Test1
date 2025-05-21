@@ -37,11 +37,16 @@ spec:
           type: string
           default: test
           description: Provide a description which will help others understand what this component is for
-        port:
-          title: Port
+        backendport:
+          title: Backend-Port
           type: number
           default: 7890
-          description: port at which the server is going to listen for HTTP request
+          description: Port at which the server is going to listen for API request
+        frontendport:
+          title: Frontend-Port
+          type: number
+          default: 3000
+          description: Port at which the server is going to listen for HTTP request          
         projectName:
           title: Project Name/Tag
           type: string
@@ -49,7 +54,8 @@ spec:
       required:
         - orgName
         - repoName
-        - port
+        - backendport
+        - frontendport
         - projectName
 
     - title: Provide Information about deployment targets 
@@ -72,7 +78,8 @@ spec:
           repoName: ${{ parameters.repoName }}
           repoVisibility: ${{ parameters.repoVisibility }}
           description: ${{ parameters.description }}
-          port: ${{ parameters.port }}
+          backendport: ${{ parameters.backendport }}
+          frontendport: ${{ parameters.frontendport }}
           namespace: ${{ parameters.namespace }}
 
     - id: sourceCodeTemplate
@@ -85,7 +92,8 @@ spec:
           orgName: ${{ parameters.orgName }}
           repoName: ${{ parameters.repoName }}
           sourceControl: github.com
-          port: ${{ parameters.port }}
+          backendport: ${{ parameters.backendport }}
+          frontendport: ${{ parameters.frontendport }}
           owner: ${{ parameters.orgName }}
           applicationType: service
           description: ${{ parameters.description }}
@@ -121,7 +129,8 @@ spec:
          ${{ parameters.namespace }}
          ${{ parameters.owner }}
          ${{ parameters.description }}
-         ${{ parameters.port }}
+         ${{ parameters.backendport }}
+         ${{ parameters.frontendport }}
          Files: ${{ steps['catalogTemplate'].output.files }}
 
     - id: deployManifests
