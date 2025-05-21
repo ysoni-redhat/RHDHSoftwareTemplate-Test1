@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://springboot-route-demo-project.apps.cluster-qr8h2.dynamic.redhatworkshops.io"
+      "url": "http://springboot-route-${{ values.namespace }}.apps.cluster-${{ values.clusterid }}.dynamic.redhatworkshops.io"
     }
   ],
   "paths": {
