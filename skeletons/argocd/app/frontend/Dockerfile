@@ -4,17 +4,11 @@ WORKDIR /app
 # Install curl and unzip (needed to fetch and extract files from GitHub)
 RUN apt-get update && apt-get install -y curl unzip && rm -rf /var/lib/apt/lists/*
 
-# Download package.json from GitHub
-ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/frontend/package.json ./
+# Download and extract the zip file containing the React app
+COPY ./react-app-frontend ./
 
 # Install dependencies
 RUN npm install
-
-# Download and extract the zip file containing the React app
-ADD https://github.com/${{ values.orgName }}/${{ values.repoName }}/raw/refs/heads/main/frontend/react-frontend.zip ./
-
-RUN unzip react-frontend.zip
-RUN mv react-app-frontend/* .
 
 # Verify installed packages and directory content
 RUN ls -la /app
