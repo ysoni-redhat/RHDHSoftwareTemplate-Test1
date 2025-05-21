@@ -23,5 +23,3 @@ spec:
     name: react-app-service
   port:
     targetPort: ${{ values.frontendport }}
-  tls:
-    termination: edge
