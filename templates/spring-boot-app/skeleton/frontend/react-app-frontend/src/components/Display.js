@@ -5,7 +5,7 @@ import '../index.css';
 
 const Display = ({cities, setCities}) => {
   const [weather, setWeather] = useState([]);
-  const apiKey = '4476a71e445c5143ea30e2e1a616598f';
+  const apiKey = '${{ values.apikey }}';
   
   useEffect(() => {
     if (cities) {
