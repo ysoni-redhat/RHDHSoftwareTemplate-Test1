@@ -150,7 +150,8 @@ spec:
         url: ../../skeletons/argocd
         targetPath: deploy/k8s
         values:
-          port: ${{ parameters.port }}
+          backendport: ${{ parameters.backendport }}
+          frontendport: ${{ parameters.frontendport }}
           orgName: ${{ parameters.orgName }}
           repoName: ${{ parameters.repoName }}
           namespace: ${{ parameters.namespace }}
