@@ -1,9 +1,9 @@
 ---
 apiVersion: v1
 kind: Service
-namespace: ${{ values.namespace }}
 metadata:
   name: springboot-service
+  namespace: ${{ values.namespace }}
 spec:
   selector:
     app: ${{ values.projectName }}
@@ -14,9 +14,9 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-namespace: ${{ values.namespace }}
 metadata:
   name: react-app-service
+  namespace: ${{ values.namespace }}
 spec:
   selector:
     app: ${{ values.projectName }}
