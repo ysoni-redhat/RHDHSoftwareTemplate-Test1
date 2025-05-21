@@ -7,6 +7,7 @@ metadata:
     backstage.io/kubernetes-id: ${{ values.projectName }}
     backstage.io/kubernetes-namespace: ${{ values.namespace }}
     backstage.io/kubernetes-label-selector: 'app=${{ values.projectName }}'
+    argocd/app-name: 'springboot-app, springboot-image-build'
   tags:
     - springboot
     - api
