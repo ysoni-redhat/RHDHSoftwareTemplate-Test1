@@ -21,6 +21,10 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: image-registry.openshift-image-registry.svc:5000/demo-project/${{ values.projectName }}:latest
+          image: image-registry.openshift-image-registry.svc:5000/${{ values.namespace }}/${{ values.projectName }}:latest
           ports:
-            - containerPort: ${{ values.port }}
+            - containerPort: ${{ values.backendport }}
+        - name: react-app
+          image: image-registry.openshift-image-registry.svc:5000/${{ values.namespace }}/${{ values.projectName }}-frontend:latest
+          ports:
+            - containerPort: ${{ values.backendport }}
