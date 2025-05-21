@@ -110,6 +110,8 @@ spec:
           deployName:  ${{ parameters.repoName }}
           entityKind: Component
           projectName: ${{ parameters.projectName }}
+          apikey: ${{ parameters.apikey }}
+          clusterid: ${{ parameters.clusterid }}
 
     - id: debug-files
       name: Debug Workspace Files
@@ -153,6 +155,7 @@ spec:
           repoName: ${{ parameters.repoName }}
           namespace: ${{ parameters.namespace }}
           projectName: ${{ parameters.projectName }}
+          clusterid: ${{ parameters.clusterid }}
 
     - id: publish
       name: Publishing to the Source Code Repository
