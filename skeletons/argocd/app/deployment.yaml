@@ -27,4 +27,4 @@ spec:
         - name: react-app
           image: image-registry.openshift-image-registry.svc:5000/${{ values.namespace }}/${{ values.projectName }}-frontend:latest
           ports:
-            - containerPort: ${{ values.backendport }}
+            - containerPort: ${{ values.frontendport }}
