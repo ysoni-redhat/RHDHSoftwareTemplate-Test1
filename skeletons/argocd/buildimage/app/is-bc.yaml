@@ -2,25 +2,25 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: springboot-demo-backend
-  namespace: demo-project
+  name: ${{ values.projectName }}-backend
+  namespace: ${{ values.namespace }}
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: springboot-demo-frontend
-  namespace: demo-project
+  name: ${{ values.projectName }}-frontend
+  namespace: ${{ values.namespace }}
 ---
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: springboot-demo-backend
-  namespace: demo-project
+  name: ${{ values.projectName }}-backend
+  namespace: ${{ values.namespace }}
 spec:
   source:
     type: Git
     git:
-      uri: https://github.com//spring-rhdh08.git
+      uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
     contextDir: deploy/k8s/app/backend
   strategy:
     type: Docker
@@ -29,7 +29,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: springboot-demo-backend:latest
+      name: ${{ values.projectName }}-backend:latest
   triggers:
     - type: ConfigChange
     - type: GitHub
@@ -39,13 +39,13 @@ spec:
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: springboot-demo-frontend
-  namespace: demo-project
+  name: ${{ values.projectName }}-frontend
+  namespace: ${{ values.namespace }}
 spec:
   source:
     type: Git
     git:
-      uri: https://github.com/ysoni-redhat/spring-rhdh08.git
+      uri: https://github.com/${{ values.orgName }}/${{ values.repoName }}.git
     contextDir: deploy/k8s/app/frontend
   strategy:
     type: Docker
@@ -54,7 +54,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: springboot-demo-frontend:latest
+      name: ${{ values.projectName }}-frontend:latest
   triggers:
     - type: ConfigChange
     - type: GitHub
