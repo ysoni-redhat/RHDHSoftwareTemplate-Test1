@@ -71,7 +71,7 @@ spec:
         namespace:
           title: k8s Namespace
           type: string 
-          default: test
+          default: demo-project
       required:
         - namespace
 
