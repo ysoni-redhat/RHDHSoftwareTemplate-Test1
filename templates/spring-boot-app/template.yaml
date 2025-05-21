@@ -37,6 +37,12 @@ spec:
           type: string
           default: test
           description: Provide a description which will help others understand what this component is for
+        clusterid:
+          title: RedHat Openshift Cluster ID
+          type: string
+        apikey:
+          title: Weather API Key
+          type: string
         backendport:
           title: Backend-Port
           type: number
@@ -57,6 +63,8 @@ spec:
         - backendport
         - frontendport
         - projectName
+        - clusterid
+        - apikey
 
     - title: Provide Information about deployment targets 
       properties:
